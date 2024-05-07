@@ -122,6 +122,11 @@ if (getenv('MOODLE_DOCKER_PHPUNIT_EXTRAS')) {
     define('TEST_ENROL_LDAP_BIND_DN', 'cn=admin,dc=openstack,dc=org');
     define('TEST_ENROL_LDAP_BIND_PW', 'password');
     define('TEST_ENROL_LDAP_DOMAIN', 'ou=Users,dc=openstack,dc=org');
+
+    define('TEST_TOOL_LDAPSYNC_HOST_URL', TEST_AUTH_LDAP_HOST_URL);
+    define('TEST_TOOL_LDAPSYNC_BIND_DN', TEST_AUTH_LDAP_BIND_DN);
+    define('TEST_TOOL_LDAPSYNC_BIND_PW', TEST_AUTH_LDAP_BIND_PW);
+    define('TEST_TOOL_LDAPSYNC_DOMAIN', TEST_AUTH_LDAP_DOMAIN);
 }
 
 if (property_exists($CFG, 'behat_wwwroot')) {

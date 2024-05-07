@@ -1,5 +1,5 @@
 # moodle-docker: Docker Containers for Moodle Developers
-[![moodle-docker CI](https://github.com/moodlehq/moodle-docker/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/moodlehq/moodle-docker/actions/workflows/ci.yml)
+[![moodle-docker CI](https://github.com/ucsf-education/moodle-docker/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/ucsf-education/moodle-docker/actions/workflows/ci.yml)
 
 This repository contains Docker configuration aimed at Moodle developers and testers to easily deploy a testing environment for Moodle.
 
@@ -10,7 +10,7 @@ This repository contains Docker configuration aimed at Moodle developers and tes
 * All PHP Extensions enabled configured for external services (e.g. solr, ldap)
 * All supported PHP versions
 * Zero-configuration approach
-* Backed by [automated tests](https://travis-ci.com/moodlehq/moodle-docker/branches)
+* ~~Backed by [automated tests](https://travis-ci.com/moodlehq/moodle-docker/branches)~~
 
 ## Prerequisites
 * [Docker](https://docs.docker.com) and [Docker Compose](https://docs.docker.com/compose/cli-command/#installing-compose-v2) installed if your Docker CLI version does not support `docker compose` command.
@@ -24,10 +24,12 @@ This repository contains Docker configuration aimed at Moodle developers and tes
 export MOODLE_DOCKER_WWWROOT=./moodle
 
 # Choose a db server (Currently supported: pgsql, mariadb, mysql, mssql, oracle)
-export MOODLE_DOCKER_DB=pgsql
+export MOODLE_DOCKER_DB=mariadb
 
 # Get Moodle code, you could select another version branch (skip this if you already got the code)
-git clone -b MOODLE_403_STABLE git://git.moodle.org/moodle.git $MOODLE_DOCKER_WWWROOT
+git clone --recurse-submodules -b UCSFCLE_401_STABLE https://github.com/ucsf-education/moodle $MOODLE_DOCKER_WWWROOT
+
+# Run 
 
 # Ensure customized config.php for the Docker containers is in place
 cp config.docker-template.php $MOODLE_DOCKER_WWWROOT/config.php
