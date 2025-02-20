@@ -22,7 +22,7 @@ SET DOCKERCOMPOSE=docker-compose -f "%BASEDIR%\base.yml"
 SET DOCKERCOMPOSE=%DOCKERCOMPOSE% -f "%BASEDIR%\service.mail.yml"
 
 IF "%MOODLE_DOCKER_PHP_VERSION%"=="" (
-    SET MOODLE_DOCKER_PHP_VERSION=8.1
+    SET MOODLE_DOCKER_PHP_VERSION=8.2
 )
 
 SET DOCKERCOMPOSE=%DOCKERCOMPOSE% -f "%BASEDIR%\db.%MOODLE_DOCKER_DB%.yml"
@@ -185,6 +185,9 @@ IF "%MOODLE_DOCKER_SELENIUM_VNC_PORT%"=="" (
     )
 )
 
+IF "%MOODLE_DOCKER_TIMEOUT_FACTOR%"=="" (
+    SET MOODLE_DOCKER_TIMEOUT_FACTOR=1
+)
 
 REM Apply local customisations if a local.yml is found.
 REM Note: This must be the final modification before the docker-compose command is called.
